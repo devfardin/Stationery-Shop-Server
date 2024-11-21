@@ -7,7 +7,11 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Server is Running');
+  res.status(200).json({
+    success: true,
+    message: 'Welcome to our server! The API is up and running smoothly. 🚀',
+    timestamp: `Started at ${new Date().toLocaleString()}`,
+  });
 });
 
 export default app;
