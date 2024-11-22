@@ -9,6 +9,9 @@ router.post('/create-product', productColtroller.createProduct);
 router.get('/', productColtroller.getAllProductData);
 
 // Filter product from the database using a specific ID
-router.get('/:id', productColtroller.getSingleProductFromDB);
+router.get('/:productId', productColtroller.getSingleProductFromDB);
+
+// Update product from the database using a specific ID
+router.put('/:productId', productColtroller.updateProductFromDB);
 
 export const ProductRoute = router;

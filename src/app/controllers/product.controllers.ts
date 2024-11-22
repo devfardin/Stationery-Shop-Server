@@ -43,8 +43,8 @@ const getAllProductData = async (req: Request, res: Response) => {
 // Filter product from the database using a specific ID
 const getSingleProductFromDB = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const result = await productServices.getSingleProduct(id);
+    const { productId } = req.params;
+    const result = await productServices.getSingleProduct(productId);
     res.status(200).json({
       message: 'Product retrieved successfully',
       status: true,
@@ -58,8 +58,32 @@ const getSingleProductFromDB = async (req: Request, res: Response) => {
     });
   }
 };
+
+/** Sends a success response with the updated product data or
+an error response if the update fails. **/
+const updateProductFromDB = async (req: Request, res: Response) => {
+  try {
+    const productInfo = req.body;
+    const { productId } = req.params;
+    await productServices.updateProductFromDB(productId, productInfo);
+    const updateProduct = await productServices.getSingleProduct(productId);
+    res.status(200).json({
+      message: 'Product updated successfully',
+      status: true,
+      data: updateProduct,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Failed to update product. Please check the provided details.',
+      status: false,
+      error,
+    });
+  }
+};
+
 export const productColtroller = {
   createProduct,
   getAllProductData,
   getSingleProductFromDB,
+  updateProductFromDB,
 };

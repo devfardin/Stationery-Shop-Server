@@ -14,3 +14,14 @@ export interface Product {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ProductUpdateInfo {
+  name?: string;
+  brand?: string;
+  price?: number;
+  category?: string;
+  description?: string;
+  quantity?: number;
+  inStock?: boolean;
+  updatedAt: Date;
+}
