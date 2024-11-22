@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
 import { Product } from '../interfaces/product.interface';
 
-const ProductSchema = new Schema<Product>({
+const productSchema = new Schema<Product>({
   name: {
     type: String,
     required: [true, 'Product name is required.'],
@@ -45,5 +45,14 @@ const ProductSchema = new Schema<Product>({
     type: Boolean,
     required: [true, 'In-stock status is required.'],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
-export const productModel = model<Product>('Products', ProductSchema);
+
+export const ProductModel = model<Product>('Product', productSchema);
