@@ -14,4 +14,6 @@ router.get('/:productId', productColtroller.getSingleProductFromDB);
 // Update product from the database using a specific ID
 router.put('/:productId', productColtroller.updateProductFromDB);
 
+router.delete('/:productId', productColtroller.deleteProductFromDB);
+
 export const ProductRoute = router;

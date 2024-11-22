@@ -81,9 +81,35 @@ const updateProductFromDB = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ Sends a success response if the product is deleted successfully, or an error response if 
+ the operation fails or
+ the product is not found.
+ */
+const deleteProductFromDB = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const result = await productServices.deleteProductFromDB(productId);
+    const deletedProduct = await productServices.getSingleProduct(productId);
+    res.status(200).json({
+      message: 'Product deleted successfully',
+      status: true,
+      data: deletedProduct,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message:
+        'Failed to delete product. Please check the provided ID and try again.',
+      status: false,
+      error,
+    });
+  }
+};
+
 export const productColtroller = {
   createProduct,
   getAllProductData,
   getSingleProductFromDB,
   updateProductFromDB,
+  deleteProductFromDB,
 };
