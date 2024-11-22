@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(cors());
 
 // application Routers
-app.use('/api/v1/products', ProductRoute);
+app.use('/api/products', ProductRoute);
+
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     success: true,

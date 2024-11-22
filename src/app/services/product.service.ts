@@ -13,8 +13,17 @@ const getAllProducts = async () => {
   return result;
 };
 
+// Filter product from the database using a specific ID
+const getSingleProduct = async (id: string) => {
+  const result = await ProductModel.findOne({ _id: id });
+  return result;
+};
+
+// Update product from the database using a specific ID
+
 // export all product services
 export const productServices = {
   createProductIntoDB,
   getAllProducts,
+  getSingleProduct,
 };

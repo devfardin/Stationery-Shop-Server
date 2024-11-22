@@ -40,7 +40,26 @@ const getAllProductData = async (req: Request, res: Response) => {
   }
 };
 
+// Filter product from the database using a specific ID
+const getSingleProductFromDB = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = await productServices.getSingleProduct(id);
+    res.status(200).json({
+      message: 'Product retrieved successfully',
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Failed to retrieve product. Please check the provided ID.',
+      status: false,
+      error,
+    });
+  }
+};
 export const productColtroller = {
   createProduct,
   getAllProductData,
+  getSingleProductFromDB,
 };
