@@ -1,3 +1,4 @@
+// Product Interface
 export interface Product {
   name: string;
   brand: string;
@@ -15,6 +16,7 @@ export interface Product {
   updatedAt: Date;
 }
 
+// ProductUpdateInfo Interface
 export interface ProductUpdateInfo {
   name?: string;
   brand?: string;
