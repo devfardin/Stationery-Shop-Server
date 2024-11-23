@@ -1,19 +1,19 @@
 import { model, Schema } from 'mongoose';
 import { Order } from '../interfaces/order.interface';
 
-const emailValidation = (email: string) => {
-  const check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  return check.test(email);
-};
+// const emailValidation = (email: string) => {
+//   const check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//   return check.test(email);
+// };
 const orderSchema = new Schema<Order>(
   {
     email: {
       type: String,
       required: [true, 'Email is required.'],
-      validate: {
-        validator: emailValidation,
-        message: 'Please fill a valid email address',
-      },
+      // validate: {
+      //   validator: emailValidation,
+      //   message: 'Please fill a valid email address',
+      // },
       trim: true,
     },
     product: {

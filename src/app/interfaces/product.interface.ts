@@ -25,5 +25,5 @@ export interface ProductUpdateInfo {
   description?: string;
   quantity?: number;
   inStock?: boolean;
-  updatedAt: Date;
+  updatedAt?: Date;
 }
