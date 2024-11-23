@@ -7,6 +7,13 @@ const createOrder = async (orderData: Order) => {
   return result;
 };
 
+// Calculate Revenue from Orders
+const orderRevenue = async () => {
+  const result = await OrderModel.find();
+  return result;
+};
+// Export the order order services functions.
 export const orderService = {
   createOrder,
+  orderRevenue,
 };
