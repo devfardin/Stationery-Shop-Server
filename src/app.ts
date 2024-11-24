@@ -14,6 +14,9 @@ app.use('/api/products', ProductRoute);
 // application Routers for order
 app.use('/api/orders', OrderRoute);
 
+// Root route handler for the application.
+// Sends a success response with a welcome message and server status information.
+
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
@@ -21,5 +24,5 @@ app.get('/', (req: Request, res: Response) => {
     timestamp: `Started at ${new Date().toLocaleString()}`,
   });
 });
-
+// Export App.
 export default app;

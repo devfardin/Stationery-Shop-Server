@@ -7,7 +7,7 @@ const createProduct = async (req: Request, res: Response) => {
     const product = req.body;
     const result = await productServices.createProductIntoDB(product);
     res.status(200).json({
-      message: 'The operation was completed successfully.',
+      message: 'Product created successfully',
       success: true,
       data: result,
     });
@@ -25,7 +25,8 @@ const createProduct = async (req: Request, res: Response) => {
 // Retrieves all products from the database.
 const getAllProductData = async (req: Request, res: Response) => {
   try {
-    const result = await productServices.getAllProducts();
+    const queryTerm = req.query.searchTerm as string;
+    const result = await productServices.getAllProducts(queryTerm);
     res.status(200).json({
       message: 'Products retrieved successfully',
       status: true,
@@ -90,12 +91,14 @@ const deleteProductFromDB = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     await productServices.deleteProductFromDB(productId);
+    // Extract order details from the request body.
     res.status(200).json({
       message: 'Product deleted successfully',
       status: true,
       data: {},
     });
   } catch (error) {
+    // Handle errors and send an appropriate error response.
     res.status(500).json({
       message:
         'Failed to delete product. Please check the provided ID and try again.',
@@ -104,7 +107,7 @@ const deleteProductFromDB = async (req: Request, res: Response) => {
     });
   }
 };
-
+// Export the Product controller functions.
 export const productColtroller = {
   createProduct,
   getAllProductData,

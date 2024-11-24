@@ -1,19 +1,22 @@
 import { model, Schema } from 'mongoose';
 import { Order } from '../interfaces/order.interface';
 
-// const emailValidation = (email: string) => {
-//   const check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//   return check.test(email);
-// };
+// Validates the format of an email address.
+const emailValidation = (email: string) => {
+  // eslint-disable-next-line no-useless-escape
+  const check = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return check.test(email);
+};
+// Create order scheme
 const orderSchema = new Schema<Order>(
   {
     email: {
       type: String,
       required: [true, 'Email is required.'],
-      // validate: {
-      //   validator: emailValidation,
-      //   message: 'Please fill a valid email address',
-      // },
+      validate: {
+        validator: emailValidation,
+        message: 'Please fill a valid email address',
+      },
       trim: true,
     },
     product: {
@@ -43,4 +46,5 @@ const orderSchema = new Schema<Order>(
     versionKey: false,
   },
 );
+// Export the order model functions.
 export const OrderModel = model<Order>('Order', orderSchema);

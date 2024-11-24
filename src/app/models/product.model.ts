@@ -1,6 +1,7 @@
 import { model, Schema } from 'mongoose';
 import { Product } from '../interfaces/product.interface';
 
+// create product scheme
 const productSchema = new Schema<Product>(
   {
     name: {
@@ -66,4 +67,5 @@ const productSchema = new Schema<Product>(
   },
 );
 
+// Export the produt model functions.
 export const ProductModel = model<Product>('Product', productSchema);

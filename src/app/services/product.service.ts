@@ -8,9 +8,16 @@ const createProductIntoDB = async (productData: Product) => {
   return result;
 };
 // find all products
-const getAllProducts = async () => {
-  const result = await ProductModel.find();
-  return result;
+const getAllProducts = async (query: string) => {
+  if (query) {
+    const result = await ProductModel.find({
+      $or: [{ name: query }, { brand: query }, { category: query }],
+    });
+    return result;
+  } else {
+    const result = await ProductModel.find();
+    return result;
+  }
 };
 
 // Filter product from the database using a specific ID

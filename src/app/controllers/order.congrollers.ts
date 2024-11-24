@@ -57,15 +57,14 @@ const createNewOrder = async (req: Request, res: Response) => {
 // Handles the calculation of total revenue from all orders.
 const orderRevenue = async (req: Request, res: Response) => {
   try {
-    const result = await orderService.orderRevenue();
+    const data = await orderService.orderRevenue();
     res.status(200).json({
       message: 'Revenue calculated successfully',
       success: true,
-      data: {
-        result,
-      },
+      data,
     });
   } catch (error) {
+    // Handle errors and send an appropriate error response.
     res.status(500).json({
       message: 'Failed to calculate revenue. Please try again later.',
       success: false,
