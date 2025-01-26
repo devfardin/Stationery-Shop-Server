@@ -1,18 +1,21 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
-import { ProductRoute } from './app/routes/products.router';
-import { OrderRoute } from './app/routes/order.router';
+import cookieParser from 'cookie-parser';
+import router from './routes';
 
 const app: Application = express();
-
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+
+// application Routes
+app.use('/api/v1', router);
 
 // application Routers for products
-app.use('/api/products', ProductRoute);
+// app.use('/api/products', ProductRoute);
 
-// application Routers for order
-app.use('/api/orders', OrderRoute);
+// // application Routers for order
+// app.use('/api/orders', OrderRoute);
 
 // Root route handler for the application.
 // Sends a success response with a welcome message and server status information.
