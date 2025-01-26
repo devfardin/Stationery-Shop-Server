@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
-import { TUser } from './user.interface';
+import { TUser, user } from './user.interface';
 import bcrypt from 'bcrypt';
 import config from '../../app/config';
-const userSchema = new Schema<TUser>(
+const userSchema = new Schema<TUser, user>(
   {
     name: {
       type: String,
@@ -46,8 +46,8 @@ userSchema.pre('save', async function (next) {
 });
 
 // get hidden field like password
-userSchema.statics.isUserExistById = async function (id: string) {
-  return await UserModal.findOne({ _id: id }).select('+password');
+userSchema.statics.isUserExistByEmail = async function (email: string) {
+  return await UserModal.findOne({ email: email }).select('+password');
 };
 userSchema.statics.isPasswordMatch = async function (
   plainTextPassword,
@@ -56,4 +56,4 @@ userSchema.statics.isPasswordMatch = async function (
   return await bcrypt.compare(plainTextPassword, hashedPassword);
 };
 
-export const UserModal = model<TUser>('Users', userSchema);
+export const UserModal = model<TUser, user>('Users', userSchema);

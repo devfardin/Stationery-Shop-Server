@@ -10,8 +10,8 @@ export type TUser = {
   isDeleted: boolean,
 };
 
-export interface UserModal extends Model<TUser> {
-  isUserExistById(id: string): Promise<TUser>;
+export interface user extends Model<TUser> {
+  isUserExistByEmail(email: string): Promise<TUser>;
   isPasswordMatch(
     plainTextPassword: string,
     hashedPassword: string,
