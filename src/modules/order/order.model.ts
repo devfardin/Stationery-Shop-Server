@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { Order } from '../interfaces/order.interface';
+import { Order } from '../../modules/order/order.interface';
 
 // Validates the format of an email address.
 const emailValidation = (email: string) => {

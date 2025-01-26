@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { orderService } from '../services/order.service';
-import { productServices } from '../services/product.service';
+import { orderService } from '../../modules/order/order.service';
+import { productServices } from '../../modules/product/product.service';
 
 // Create a new order in the database.
 const createNewOrder = async (req: Request, res: Response) => {
