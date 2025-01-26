@@ -1,4 +1,4 @@
-import { OrderModel } from '../../app/models/order.model';
+import { OrderModel } from '../order/order.model';
 import { Order } from './order.interface';
 // Create Order in mongobd database
 const createOrder = async (orderData: Order) => {

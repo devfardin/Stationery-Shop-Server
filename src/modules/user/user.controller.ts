@@ -12,7 +12,18 @@ const createNewUserIntoDb = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getMe = catchAsync(async (req, res) => {
+  const { email } = req.user;
+  const result = await UserService.getMe(email);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'User is retrived Succesfully',
+    data: result,
+  });
+});
 // export all user controller function
 export const UserController = {
   createNewUserIntoDb,
+  getMe,
 };

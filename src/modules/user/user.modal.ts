@@ -4,9 +4,13 @@ import bcrypt from 'bcrypt';
 import config from '../../app/config';
 const userSchema = new Schema<TUser, user>(
   {
-    name: {
+    firstName: {
       type: String,
-      required: [true, 'User Name is required'],
+      required: [true, 'First Name is required'],
+    },
+    lastName: {
+      type: String,
+      required: [true, 'Last Name is required'],
     },
     email: {
       type: String,
