@@ -5,7 +5,7 @@ import { UserController } from './user.controller';
 
 const router = express.Router();
 router.post(
-  '/crate-user',
+  '/create-user',
   validationRequest(userValidation.createUserValidation),
   UserController.createNewUserIntoDb,
 );
