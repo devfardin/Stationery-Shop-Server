@@ -9,7 +9,7 @@ export interface Product {
   discount: number;
   quantity: number;
   sku: string;
-  category: string;
+  category: Types.ObjectId;
   brand: string;
   feature: string;
 }
@@ -20,7 +20,7 @@ export interface ProductUpdateInfo {
   author: Types.ObjectId;
   brand?: string;
   price?: number;
-  category?: string;
+  category?: Types.ObjectId;
   description?: string;
   quantity?: number;
   inStock?: boolean;
