@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import { StatusCodes } from 'http-status-codes';
 import catchAsync from '../../app/utils/catchAsync';
 import sendResponse from '../../app/utils/sendResponse';
@@ -13,8 +14,8 @@ const createNewUserIntoDb = catchAsync(async (req, res) => {
   });
 });
 const getMe = catchAsync(async (req, res) => {
-  const { email } = req.user;
-  const result = await UserService.getMe(email);
+  const { userId } = req.params;
+  const result = await UserService.getMe(userId);
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,

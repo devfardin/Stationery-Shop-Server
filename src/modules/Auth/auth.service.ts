@@ -38,7 +38,7 @@ const loginUser = async (payload: TLoginUser) => {
   const jwtPayload = {
     userEmail: isUserExist?.email,
     userId: isUserExist?._id,
-    role: isUserExist.role,
+    role: isUserExist?.role,
   };
   //   Crate Jwt Token
   const accessToken = createToken(
@@ -88,13 +88,6 @@ const refreshToken = async (token: string) => {
       'This account has been disabled. Please contact support for assistance.',
     );
   }
-
-  // create token and sent to the client
-  // const jwtPayload1 = {
-  //   userEmail: isUserExist?.email,
-  //   userid: isUserExist?._id,
-  //   role: isUserExist.role,
-  // };
 
   const jwtPayload = {
     userEmail: isUserExist?.email,

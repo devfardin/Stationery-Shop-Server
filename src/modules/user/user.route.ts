@@ -12,7 +12,7 @@ router.post(
   UserController.createNewUserIntoDb,
 );
 router.get(
-  '/me',
+  '/:userId',
   auth(USER_ROLE.admin, USER_ROLE.customer),
   UserController.getMe,
 );

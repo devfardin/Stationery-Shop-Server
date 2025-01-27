@@ -26,7 +26,6 @@ const userSchema = new Schema<TUser, user>(
       type: String,
       enum: ['admin', 'customer'],
       default: 'customer',
-      select: 0,
     },
     status: {
       type: String,

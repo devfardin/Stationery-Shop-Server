@@ -15,8 +15,8 @@ const createUserIntoDb = async (payload: TUser) => {
   return result;
 };
 
-const getMe = async (userEmail: string) => {
-  const result = await UserModal.findOne({ email: userEmail });
+const getMe = async (userId: string) => {
+  const result = await UserModal.findOne({ _id: userId });
   return result;
 };
 
