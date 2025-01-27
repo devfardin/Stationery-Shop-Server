@@ -1,5 +1,6 @@
 export type TCategory = {
-  categoryName: string,
+  userId: string,
+  name: string,
   description: string,
   feature: string,
 };
