@@ -4,15 +4,15 @@ import { Product } from '../../modules/product/product.interface';
 // create product scheme
 const productSchema = new Schema<Product>(
   {
-    name: {
+    title: {
       type: String,
       required: [true, 'Product name is required.'],
     },
-    brand: {
+    description: {
       type: String,
       required: [
         true,
-        "Brand is required. Please specify the product's brand.",
+        'Description is required. Please provide details about the product.',
       ],
     },
     price: {
@@ -23,23 +23,9 @@ const productSchema = new Schema<Product>(
       ],
       min: [0, 'Price must be a positive number.'],
     },
-    category: {
-      type: String,
-      required: [true, 'Category is required.'],
-      enum: [
-        'Writing',
-        'Office Supplies',
-        'Art Supplies',
-        'Educational',
-        'Technology',
-      ],
-    },
-    description: {
-      type: String,
-      required: [
-        true,
-        'Description is required. Please provide details about the product.',
-      ],
+    discount: {
+      type: Number,
+      min: [0, 'Price must be a positive number.'],
     },
     quantity: {
       type: Number,
@@ -49,21 +35,27 @@ const productSchema = new Schema<Product>(
       ],
       min: [0, 'Quantity must be a non-negative number.'],
     },
-    inStock: {
-      type: Boolean,
-      required: [true, 'In-stock status is required.'],
+    sku: {
+      type: String,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now(),
+    category: {
+      type: String,
+      required: [true, 'Category is required.'],
     },
-    updatedAt: {
-      type: Date,
-      default: Date.now(),
+    brand: {
+      type: String,
+      required: [
+        true,
+        "Brand is required. Please specify the product's brand.",
+      ],
+    },
+    feature: {
+      type: String,
     },
   },
   {
     versionKey: false,
+    timestamps: true,
   },
 );
 

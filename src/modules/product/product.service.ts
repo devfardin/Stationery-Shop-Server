@@ -1,5 +1,5 @@
-import { ProductModel } from '../../app/models/product.model';
 import { Product, ProductUpdateInfo } from './product.interface';
+import { ProductModel } from './product.model';
 
 // Create Product in mongobd database
 const createProductIntoDB = async (productData: Product) => {

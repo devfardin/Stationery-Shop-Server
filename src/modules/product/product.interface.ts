@@ -1,24 +1,19 @@
 // Product Interface
 export interface Product {
-  name: string;
-  brand: string;
-  price: number;
-  category:
-    | 'Writing'
-    | 'Office Supplies'
-    | 'Art Supplies'
-    | 'Educational'
-    | 'Technology';
+  title: string;
   description: string;
+  price: number;
+  discount: number;
   quantity: number;
-  inStock: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  sku: string;
+  category: string;
+  brand: string;
+  feature: string;
 }
 
 // ProductUpdateInfo Interface
 export interface ProductUpdateInfo {
-  name?: string;
+  title?: string;
   brand?: string;
   price?: number;
   category?: string;
