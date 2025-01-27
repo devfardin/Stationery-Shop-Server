@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextFunction, Request } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import catchAsync from '../../app/utils/catchAsync';
 import { TUserRole } from '../user/user.interface';
 import AppError from '../../app/error/AppError';
@@ -33,7 +33,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     if (!decoded) {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized');
     }
-    const { userEmail, role, iat } = decoded;
+    const { userEmail, userId, role, iat } = decoded;
     const isUserExist = await UserModal.isUserExistByEmail(userEmail);
 
     //   check user is not exits

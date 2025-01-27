@@ -37,6 +37,7 @@ const loginUser = async (payload: TLoginUser) => {
   // create token and sent to the client
   const jwtPayload = {
     userEmail: isUserExist?.email,
+    userId: isUserExist?._id,
     role: isUserExist.role,
   };
   //   Crate Jwt Token
@@ -88,13 +89,19 @@ const refreshToken = async (token: string) => {
     );
   }
 
-  //   write user change passwod function here
-
   // create token and sent to the client
+  // const jwtPayload1 = {
+  //   userEmail: isUserExist?.email,
+  //   userid: isUserExist?._id,
+  //   role: isUserExist.role,
+  // };
+
   const jwtPayload = {
     userEmail: isUserExist?.email,
+    userId: isUserExist?._id,
     role: isUserExist.role,
   };
+
   const accessToken = createToken(
     jwtPayload,
     config.jwt_access_token as string,

@@ -7,7 +7,7 @@ const crateCategoryValidation = z.object({
     description: z.string({
       required_error: 'Category descriiption is requires',
     }),
-    feture: z.string(),
+    feature: z.string(),
   }),
 });
 export const CategoryValidation = {

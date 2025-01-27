@@ -9,6 +9,8 @@ export type TUser = {
   role: 'admin' | 'customer',
   status: 'active' | 'disabled',
   isDeleted: boolean,
+  userId?: string,
+  _id?: string,
 };
 
 export interface user extends Model<TUser> {
