@@ -12,5 +12,6 @@ router.post(
   validationRequest(CategoryValidation.crateCategoryValidation),
   CategoryController.creatCategoryInDB,
 );
+router.get('/', CategoryController.getAllCategoriesFromDB);
 
 export const CategoryRoutes = router;

@@ -26,14 +26,17 @@ const userSchema = new Schema<TUser, user>(
       type: String,
       enum: ['admin', 'customer'],
       default: 'customer',
+      select: 0,
     },
     status: {
       type: String,
       emit: ['active', 'disabled'],
+      select: 0,
     },
     isDeleted: {
       type: Boolean,
       default: false,
+      select: 0,
     },
   },
   {
