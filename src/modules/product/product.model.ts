@@ -8,6 +8,11 @@ const productSchema = new Schema<Product>(
       type: String,
       required: [true, 'Product name is required.'],
     },
+    author: {
+      type: Schema.Types.ObjectId,
+      required: [true, 'Auther id is required'],
+      ref: 'Users',
+    },
     description: {
       type: String,
       required: [

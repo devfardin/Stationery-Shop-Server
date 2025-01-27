@@ -6,7 +6,7 @@ const creatCategoryInDB = async (payload: TCategory) => {
   return result;
 };
 const getAllCategoriesFromDB = async () => {
-  const result = await CategoryModel.find().populate('userId');
+  const result = await CategoryModel.find().populate('author');
   return result;
 };
 export const CategoryService = {

@@ -1,9 +1,9 @@
 import express from 'express';
-import { productColtroller } from '../controllers/product.controllers';
+import { productColtroller } from './product.controllers';
 const router = express.Router();
 
 // will call controller function for create a product
-router.post('/', productColtroller.createProduct);
+router.post('/create', productColtroller.createProduct);
 
 // find all products
 router.get('/', productColtroller.getAllProductData);

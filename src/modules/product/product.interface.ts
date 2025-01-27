@@ -1,6 +1,9 @@
+import { Types } from 'mongoose';
+
 // Product Interface
 export interface Product {
   title: string;
+  author: Types.ObjectId;
   description: string;
   price: number;
   discount: number;
@@ -14,6 +17,7 @@ export interface Product {
 // ProductUpdateInfo Interface
 export interface ProductUpdateInfo {
   title?: string;
+  author: Types.ObjectId;
   brand?: string;
   price?: number;
   category?: string;

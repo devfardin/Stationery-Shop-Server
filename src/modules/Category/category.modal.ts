@@ -3,8 +3,8 @@ import { TCategory } from './category.interface';
 
 const creatCategoryInDB = new Schema<TCategory>(
   {
-    userId: {
-      type: String,
+    author: {
+      type: Schema.Types.ObjectId,
       required: [true, 'User is is required'],
       ref: 'Users',
     },
