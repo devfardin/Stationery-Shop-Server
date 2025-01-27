@@ -9,7 +9,13 @@ const getAllCategoriesFromDB = async () => {
   const result = await CategoryModel.find().populate('author');
   return result;
 };
+
+const deleteCategoryFromDB = async (productId: string) => {
+  const result = await CategoryModel.deleteOne({ _id: productId });
+  return result;
+};
 export const CategoryService = {
   creatCategoryInDB,
   getAllCategoriesFromDB,
+  deleteCategoryFromDB,
 };

@@ -14,4 +14,10 @@ router.post(
 );
 router.get('/', CategoryController.getAllCategoriesFromDB);
 
+router.delete(
+  '/:productId',
+  // auth(USER_ROLE.admin),
+  CategoryController.delteCategoryFromDB,
+);
+
 export const CategoryRoutes = router;
