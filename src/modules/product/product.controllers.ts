@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import { productServices } from '../../modules/product/product.service';
+import sendResponse from '../../app/utils/sendResponse';
+import { StatusCodes } from 'http-status-codes';
 
 // Handles the creation of a new product.
 const createProduct = async (req: Request, res: Response) => {
@@ -43,50 +45,33 @@ const getAllProductData = async (req: Request, res: Response) => {
 
 // Filter product from the database using a specific ID
 const getSingleProductFromDB = async (req: Request, res: Response) => {
-  try {
-    const { productId } = req.params;
-    const result = await productServices.getSingleProduct(productId);
-    res.status(200).json({
-      message: 'Product retrieved successfully',
-      status: true,
-      data: result,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: 'Failed to retrieve product. Please check the provided ID.',
-      status: false,
-      error,
-    });
-  }
+  const { productId } = req.params;
+  const result = await productServices.getSingleProduct(productId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Product retrieved successfully',
+    data: result,
+  });
 };
 
 /** Sends a success response with the updated product data or
 an error response if the update fails. **/
 const updateProductFromDB = async (req: Request, res: Response) => {
-  try {
-    const productInfo = req.body;
-    const { productId } = req.params;
-    await productServices.updateProductFromDB(productId, productInfo);
-    const updateProduct = await productServices.getSingleProduct(productId);
-    res.status(200).json({
-      message: 'Product updated successfully',
-      status: true,
-      data: updateProduct,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: 'Failed to update product. Please check the provided details.',
-      status: false,
-      error,
-    });
-  }
+  const productInfo = req.body;
+  const { productId } = req.params;
+  const result = await productServices.updateProductFromDB(
+    productId,
+    productInfo,
+  );
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    message: 'Product updated successfully',
+    success: true,
+    data: result,
+  });
 };
 
-/**
- Sends a success response if the product is deleted successfully, or an error response if 
- the operation fails or
- the product is not found.
- */
 const deleteProductFromDB = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;

@@ -30,7 +30,6 @@ const productSchema = new Schema<Product>(
     },
     discount: {
       type: Number,
-      min: [0, 'Price must be a positive number.'],
     },
     quantity: {
       type: Number,

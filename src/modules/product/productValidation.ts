@@ -1,5 +1,18 @@
 import { z } from 'zod';
 
+const createProductValidation = z.object({
+  body: z.object({
+    title: z.string(),
+    descriiption: z.string(),
+    price: z.number(),
+    discount: z.number(),
+    quantity: z.number(),
+    sku: z.string(),
+    category: z.string(),
+    brand: z.string(),
+    feature: z.string(),
+  }),
+});
 const upateProductValidation = z.object({
   body: z.object({
     title: z.string().optional(),
@@ -15,4 +28,5 @@ const upateProductValidation = z.object({
 });
 export const ProductValidation = {
   upateProductValidation,
+  createProductValidation,
 };

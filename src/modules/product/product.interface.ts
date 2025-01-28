@@ -21,6 +21,7 @@ export interface ProductUpdateInfo {
   brand?: string;
   price?: number;
   category?: Types.ObjectId;
+  discount: number;
   description?: string;
   quantity?: number;
   inStock?: boolean;

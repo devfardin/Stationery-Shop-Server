@@ -27,7 +27,7 @@ const getAllProducts = async (query: string) => {
 const getSingleProduct = async (productId: string) => {
   const result = await ProductModel.findOne({ _id: productId }).populate([
     { path: 'author', select: 'firstName lastName email' },
-    { path: 'category', select: 'name description' },
+    { path: 'category', select: '_id name description' },
   ]);
   return result;
 };
@@ -37,14 +37,9 @@ const updateProductFromDB = async (
   productId: string,
   productInfo: ProductUpdateInfo,
 ) => {
-  const updateProductData = {
-    ...productInfo,
-    updatedAt: new Date(),
-  };
-  const result = await ProductModel.updateOne(
-    { _id: productId },
-    updateProductData,
-  );
+  const result = await ProductModel.updateOne({ _id: productId }, productInfo, {
+    new: true,
+  });
   return result;
 };
 
