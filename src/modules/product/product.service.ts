@@ -16,7 +16,7 @@ const getAllProducts = async (query: string) => {
     return result;
   } else {
     const result = await ProductModel.find().populate([
-      { path: 'author', select: 'name email' },
+      { path: 'author', select: 'firstName lastName email' },
       { path: 'category', select: 'name description' },
     ]);
     return result;

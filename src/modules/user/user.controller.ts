@@ -1,4 +1,3 @@
-/* eslint-disable no-unsafe-optional-chaining */
 import { StatusCodes } from 'http-status-codes';
 import catchAsync from '../../app/utils/catchAsync';
 import sendResponse from '../../app/utils/sendResponse';

@@ -2,6 +2,8 @@ import express from 'express';
 import { productColtroller } from './product.controllers';
 import validationRequest from '../../app/middlewares/validationRequest';
 import { ProductValidation } from './productValidation';
+import auth from '../Auth/auth';
+import { USER_ROLE } from '../user/user.constant';
 const router = express.Router();
 
 // will call controller function for create a product
@@ -21,7 +23,11 @@ router.put(
 );
 
 // Delete product form database using a specific ID
-router.delete('/:productId', productColtroller.deleteProductFromDB);
+router.delete(
+  '/:productId',
+  auth(USER_ROLE.admin),
+  productColtroller.deleteProductFromDB,
+);
 
 // Export the Product Routers functions.
 export const ProductRoute = router;
