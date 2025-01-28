@@ -25,7 +25,10 @@ const getAllProducts = async (query: string) => {
 
 // Filter product from the database using a specific ID
 const getSingleProduct = async (productId: string) => {
-  const result = await ProductModel.findOne({ _id: productId });
+  const result = await ProductModel.findOne({ _id: productId }).populate([
+    { path: 'author', select: 'firstName lastName email' },
+    { path: 'category', select: 'name description' },
+  ]);
   return result;
 };
 
