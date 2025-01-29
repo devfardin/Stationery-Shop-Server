@@ -6,3 +6,7 @@ export type TCart = {
   date: string,
   quantity: number,
 };
+export type TUpdateCartItems = {
+  id: string,
+  newQuantity: number,
+};

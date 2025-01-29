@@ -32,8 +32,30 @@ const getCartItemsByUser = catchAsync(async (req, res) => {
   });
 });
 
+const upDateCartItem = catchAsync(async (req, res) => {
+  const result = CartService.upDateCartItem(req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Product quantity updated successfully!',
+    data: result,
+  });
+});
+const deleteCartItemFromDB = catchAsync(async (req, res) => {
+  const { productId } = req.params;
+  const result = CartService.deleteCartItemFromDB(productId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Cart item deleted successfully!',
+    data: result,
+  });
+});
+
 export const CartController = {
   createCartIntoDB,
   getAllCartItmsFromDB,
   getCartItemsByUser,
+  upDateCartItem,
+  deleteCartItemFromDB,
 };
