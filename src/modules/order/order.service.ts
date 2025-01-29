@@ -1,9 +1,8 @@
 import { OrderModel } from '../order/order.model';
-import { Order } from './order.interface';
+import { TOrder } from './order.interface';
 // Create Order in mongobd database
-const createOrder = async (orderData: Order) => {
-  const order = new OrderModel(orderData);
-  const result = await order.save();
+const createOrder = async (payload: TOrder) => {
+  const result = await OrderModel.create(payload);
   return result;
 };
 

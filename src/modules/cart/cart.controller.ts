@@ -5,6 +5,11 @@ import { CartService } from './cart.service';
 
 const createCartIntoDB = catchAsync(async (req, res) => {
   const result = await CartService.createCartIntoDB(req.body);
+  // if (SingleData.quantity <= 0) {
+  //   await productServices.updateProductFromDB(productId, {
+  //     inStock: false,
+  //   });
+  // }
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,

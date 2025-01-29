@@ -1,10 +1,14 @@
-import { ObjectId } from 'mongoose';
-// Order interface
-export interface Order {
-  email: string;
-  product: ObjectId;
-  quantity: number;
-  totalPrice: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { Types } from 'mongoose';
+
+export type TShiping = {
+  Apartment: string,
+  address: string,
+  city: string,
+  firstName: string,
+  lastName: string,
+  postCode: string,
+};
+export type TOrder = {
+  product: Types.ObjectId,
+  shiping: TShiping,
+};
