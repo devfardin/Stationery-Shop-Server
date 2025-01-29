@@ -4,4 +4,5 @@ export type TCart = {
   user: string,
   product: Types.ObjectId,
   date: string,
+  quantity: number,
 };

@@ -21,8 +21,19 @@ const getAllCartItmsFromDB = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getCartItemsByUser = catchAsync(async (req, res) => {
+  const email = req?.query?.email as string;
+  const result = await CartService.getCartItemsByUser(email);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Item retrieved successfully',
+    data: result,
+  });
+});
 
 export const CartController = {
   createCartIntoDB,
   getAllCartItmsFromDB,
+  getCartItemsByUser,
 };

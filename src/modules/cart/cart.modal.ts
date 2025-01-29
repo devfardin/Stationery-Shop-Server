@@ -15,5 +15,9 @@ const cartSchema = new Schema<TCart>({
     type: String,
     default: Date(),
   },
+  quantity: {
+    type: Number,
+    required: [true, 'Product quantity is required'],
+  },
 });
 export const CartModal = model<TCart>('Carts', cartSchema);
