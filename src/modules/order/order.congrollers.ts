@@ -5,12 +5,6 @@ import { orderService } from '../../modules/order/order.service';
 const createNewOrder = async (req: Request, res: Response) => {
   try {
     // Extract order details from the request body.
-    const orderInfo = req.body;
-    // const productId = orderInfo.product;
-    const cartId = orderInfo.porductId;
-
-    console.log(orderInfo);
-    
 
     res.status(200).json({
       success: true,
