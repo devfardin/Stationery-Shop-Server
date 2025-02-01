@@ -28,8 +28,6 @@ const auth = (...requiredRoles: TUserRole[]) => {
     } catch (error: any) {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized');
     }
-
-    // console.log(decoded);
     if (!decoded) {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized');
     }
