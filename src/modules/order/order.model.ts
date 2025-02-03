@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { TOrder, TShiping } from './order.interface';
+import { productSchema } from '../product/product.model';
 
 // Create order scheme
 const shipingSchema = new Schema<TShiping>({
@@ -36,9 +37,9 @@ const shipingSchema = new Schema<TShiping>({
 });
 
 const orderSchema = new Schema<TOrder>({
-  product: {
-    type: Schema.Types.ObjectId,
-    ref: 'Carts',
+  porducts: {
+    type: [productSchema],
+    required: [true, 'products is required'],
   },
   shiping: {
     type: shipingSchema,

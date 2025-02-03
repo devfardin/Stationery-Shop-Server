@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import { Product } from '../product/product.interface';
 
 export type TShiping = {
   Apartment: string,
@@ -8,7 +8,13 @@ export type TShiping = {
   lastName: string,
   postCode: string,
 };
+export type TProduct = {
+  user: string,
+  product: Product,
+  date: string,
+  quantity: number,
+};
 export type TOrder = {
-  product: Types.ObjectId,
+  porducts: TProduct[],
   shiping: TShiping,
 };

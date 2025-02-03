@@ -2,7 +2,7 @@ import { model, Schema } from 'mongoose';
 import { Product } from '../../modules/product/product.interface';
 
 // create product scheme
-const productSchema = new Schema<Product>(
+export const productSchema = new Schema<Product>(
   {
     title: {
       type: String,
