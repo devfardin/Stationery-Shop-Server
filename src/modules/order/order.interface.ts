@@ -20,5 +20,6 @@ export type TOrder = {
   shiping: TShiping,
   cartId: string[],
   status: string,
+  paymentStatus: string,
   TotalPrice: number,
 };

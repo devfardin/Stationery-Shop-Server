@@ -52,6 +52,10 @@ const orderSchema = new Schema<TOrder>({
     type: String,
     default: 'pending',
   },
+  paymentStatus: {
+    type: String,
+    default: 'pending',
+  },
   TotalPrice: {
     type: Number,
   },
