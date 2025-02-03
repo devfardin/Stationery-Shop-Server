@@ -3,10 +3,22 @@ import { OrderModel } from '../order/order.model';
 import { TOrder } from './order.interface';
 // Create Order in mongobd database
 const createOrder = async (payload: TOrder) => {
+  const orderInfo = payload;
   const result = await OrderModel.create(payload);
   const productId = payload?.cartId.map((id) => id);
   await CartModal.deleteMany({ _id: productId });
-  return result;
+  const shurjopayPayload = {
+    amount: orderInfo.TotalPrice,
+    order_id: result._id,
+    currency: 'BDT',
+    customer_name: '',
+    customer_address: '',
+    customer_phone: '',
+    customer_email: '',
+  };
+  console.log(result);
+
+  // return result;
 };
 
 // Calculate Revenue from Orders

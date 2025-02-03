@@ -57,7 +57,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
         'You are not authorized user!',
       );
     }
-    req.user = decoded as JwtPayload;
+    req.user = decoded;
     next();
   });
 };
