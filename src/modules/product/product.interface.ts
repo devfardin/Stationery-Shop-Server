@@ -12,6 +12,7 @@ export interface Product {
   category: Types.ObjectId;
   brand: string;
   feature: string;
+  id?: string;
 }
 
 // ProductUpdateInfo Interface

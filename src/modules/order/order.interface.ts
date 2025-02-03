@@ -13,8 +13,12 @@ export type TProduct = {
   product: Product,
   date: string,
   quantity: number,
+  id: string,
 };
 export type TOrder = {
   porducts: TProduct[],
   shiping: TShiping,
+  cartId: string[],
+  status: string,
+  TotalPrice: number,
 };

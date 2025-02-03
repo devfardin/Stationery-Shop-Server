@@ -57,6 +57,10 @@ export const productSchema = new Schema<Product>(
     feature: {
       type: String,
     },
+    id: {
+      type: String,
+      require: false,
+    },
   },
   {
     versionKey: false,

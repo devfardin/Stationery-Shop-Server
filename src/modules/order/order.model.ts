@@ -44,6 +44,17 @@ const orderSchema = new Schema<TOrder>({
   shiping: {
     type: shipingSchema,
   },
+  cartId: {
+    type: [String],
+    required: [true, 'cart id is required'],
+  },
+  status: {
+    type: String,
+    default: 'pending',
+  },
+  TotalPrice: {
+    type: Number,
+  },
 });
 
 // Export the order model functions.
