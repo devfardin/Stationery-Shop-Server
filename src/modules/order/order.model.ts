@@ -59,20 +59,14 @@ const orderSchema = new Schema<TOrder>({
   shiping: {
     type: shipingSchema,
   },
-  // cartId: {
-  //   type: [String],
-  //   required: [true, 'cart id is required'],
-  // },
-  status: {
-    type: String,
-    default: 'pending',
-  },
   user: {
     type: userSchema,
   },
-  paymentStatus: {
+  status: {
     type: String,
-    default: 'pending',
+    enum: ['Pending', 'Paid', 'Shipped', 'Completed', 'Cancelled'],
+    message: '{VALUE} is not accepted',
+    default: 'Pending',
   },
   TotalPrice: {
     type: Number,

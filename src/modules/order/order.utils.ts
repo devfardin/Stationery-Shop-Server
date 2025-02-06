@@ -16,7 +16,7 @@ shurjopay.config(
   'sp_sandbox',
   'pyyk97hu&6u6',
   'SP',
-  'https://<your.app.com>/shurjopay-response'
+  'https://sandbox.shurjopayment.com/response'
 )
 const makePayment = async (payload: any) => {
  return new Promise((resolve, reject) => {

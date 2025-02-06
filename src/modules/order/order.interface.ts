@@ -26,9 +26,7 @@ export type TOrder = {
   porducts: TProduct[],
   shiping: TShiping,
   user: Tuser,
-  cartId: string[],
-  status: string,
-  paymentStatus: string,
+  status: 'Pending' | 'Paid' | 'Shipped' | 'Completed' | 'Cancelled',
   TotalPrice: number,
 };
 

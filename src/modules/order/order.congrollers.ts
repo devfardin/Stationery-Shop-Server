@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { orderService } from '../../modules/order/order.service';
 import sendResponse from '../../app/utils/sendResponse';
 import { StatusCodes } from 'http-status-codes';
+import catchAsync from '../../app/utils/catchAsync';
 
 // Create a new order in the database.
 const createNewOrder = async (req: Request, res: Response) => {
@@ -14,6 +15,15 @@ const createNewOrder = async (req: Request, res: Response) => {
     data: result,
   });
 };
+const verifyPayment = catchAsync(async (req, res) => {
+  const order = await orderService.verifyPayment(req.query.order_id as string);
+  sendResponse(res, {
+    success: true,
+    statusCode: StatusCodes.CREATED,
+    message: 'Order verified successfully',
+    data: order,
+  });
+});
 
 // Handles the calculation of total revenue from all orders.
 const orderRevenue = async (req: Request, res: Response) => {
@@ -37,4 +47,5 @@ const orderRevenue = async (req: Request, res: Response) => {
 export const orderControllers = {
   createNewOrder,
   orderRevenue,
+  verifyPayment,
 };

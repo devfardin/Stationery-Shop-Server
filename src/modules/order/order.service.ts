@@ -11,7 +11,7 @@ const createOrder = async (payload: TOrder, clientIp: string) => {
   const shurjopayPayload = {
     amount: orderInfo?.TotalPrice,
     order_id: result?._id,
-    currency: 'USD',
+    currency: 'BDT',
     customer_name: `${orderInfo?.shiping?.firstName} ${orderInfo?.shiping?.lastName}`,
     customer_address: orderInfo?.shiping?.address,
     customer_email: orderInfo.user.email,
@@ -60,4 +60,5 @@ const orderRevenue = async () => {
 export const orderService = {
   createOrder,
   orderRevenue,
+  verifyPayment,
 };
