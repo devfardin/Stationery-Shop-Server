@@ -64,6 +64,16 @@ const orderRevenue = async (req: Request, res: Response) => {
     });
   }
 };
+const UpdateOrserStatus = catchAsync(async (req, res) => {
+  const result = await orderService.orderStatusUpdate(req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Order Status Update Succesfully',
+    data: result,
+  });
+});
+
 // Export the order controller functions.
 export const orderControllers = {
   createNewOrder,
@@ -71,4 +81,5 @@ export const orderControllers = {
   verifyPayment,
   getOrders,
   getOrderDataBaseUser,
+  UpdateOrserStatus,
 };
