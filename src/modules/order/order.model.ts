@@ -68,6 +68,15 @@ const orderSchema = new Schema<TOrder>({
     message: '{VALUE} is not accepted',
     default: 'Pending',
   },
+  transation: {
+    id: {
+      type: String,
+    },
+    transationStatus: {
+      type: String,
+      default: 'Pending',
+    },
+  },
   TotalPrice: {
     type: Number,
   },

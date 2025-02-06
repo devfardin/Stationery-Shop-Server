@@ -27,6 +27,10 @@ export type TOrder = {
   shiping: TShiping,
   user: Tuser,
   status: 'Pending' | 'Paid' | 'Shipped' | 'Completed' | 'Cancelled',
+  transation: {
+    id?: string,
+    transationStatus: string,
+  },
   TotalPrice: number,
 };
 

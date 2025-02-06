@@ -22,6 +22,14 @@ const createOrder = async (payload: TOrder, clientIp: string) => {
 
   const payment = await orderUtils.makePayment(shurjopayPayload);
   // console.log(payment);
+  if (payment.transactionStatus) {
+    await OrderModel.updateOne({
+      transation: {
+        id: payment.sp_order_id,
+        transationStatus: payment.transactionStatus,
+      },
+    });
+  }
 
   return { result, payment };
 };
