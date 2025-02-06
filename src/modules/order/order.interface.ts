@@ -1,5 +1,6 @@
 import { Types } from 'mongoose';
 import { Product } from '../product/product.interface';
+import { strictObject } from 'zod';
 
 export type TShiping = {
   Apartment: string,
@@ -26,10 +27,15 @@ export type TOrder = {
   porducts: TProduct[],
   shiping: TShiping,
   user: Tuser,
-  status: 'Pending' | 'Paid' | 'Shipped' | 'Completed' | 'Cancelled',
+  status: 'Pending' | 'Paid' | 'Shipped' | 'Completed' | 'Cancelled' | 'Failed',
   transation: {
     id?: string,
     transationStatus: string,
+    bank_status: string,
+    sp_code: string,
+    sp_message: string,
+    method: string,
+    date_time: string,
   },
   TotalPrice: number,
 };

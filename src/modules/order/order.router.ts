@@ -5,7 +5,8 @@ const router = express.Router();
 
 // Route: POST /create-orders
 router.post('/', orderControllers.createNewOrder);
-router.get('/', orderControllers.verifyPayment);
+router.put('/', orderControllers.verifyPayment);
+router.get('/', orderControllers.getOrders);
 
 // Route: GET /revenue
 router.get('/revenue', orderControllers.orderRevenue);

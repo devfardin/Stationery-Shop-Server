@@ -64,7 +64,7 @@ const orderSchema = new Schema<TOrder>({
   },
   status: {
     type: String,
-    enum: ['Pending', 'Paid', 'Shipped', 'Completed', 'Cancelled'],
+    enum: ['Pending', 'Paid', 'Shipped', 'Completed', 'Cancelled', 'Failed'],
     message: '{VALUE} is not accepted',
     default: 'Pending',
   },
@@ -75,6 +75,22 @@ const orderSchema = new Schema<TOrder>({
     transationStatus: {
       type: String,
       default: 'Pending',
+    },
+    bank_status: {
+      type: String,
+    },
+    sp_code: {
+      type: String,
+    },
+    sp_message: {
+      type: String,
+    },
+    method: {
+      type: String,
+    },
+    date_time: {
+      type: String,
+      default: Date(),
     },
   },
   TotalPrice: {

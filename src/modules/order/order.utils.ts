@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
-import Shurjopay, { PaymentResponse } from 'shurjopay';
+import Shurjopay, { PaymentResponse, VerificationResponse } from 'shurjopay';
 import config from '../../app/config';
 
 const shurjopay = new Shurjopay()
@@ -35,7 +35,7 @@ const makePayment = async (payload: any): Promise<PaymentResponse> => {
 //  return paymentResult;
 }
 
-const verifyPaymentAsync = async (order_id: string, ) => {
+const verifyPaymentAsync = async (order_id: string): Promise<VerificationResponse[]>=> {
   return new Promise((resolve, reject) => {
     shurjopay.verifyPayment(order_id, (response) => resolve(response), (error) => reject(error))
   } )
