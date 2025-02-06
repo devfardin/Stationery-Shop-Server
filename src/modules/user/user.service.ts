@@ -19,8 +19,22 @@ const getMe = async (userId: string) => {
   const result = await UserModal.findOne({ _id: userId });
   return result;
 };
+const getUsers = async () => {
+  const result = await UserModal.find();
+  return result;
+};
 
+const updateRole = async (payload: { id: string, role: string }) => {
+  const result = await UserModal.updateOne(
+    { _id: payload.id },
+    { role: payload.role },
+    { new: true },
+  );
+  return result;
+};
 export const UserService = {
   createUserIntoDb,
   getMe,
+  getUsers,
+  updateRole,
 };

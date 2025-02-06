@@ -22,8 +22,28 @@ const getMe = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const getUsers = catchAsync(async (req, res) => {
+  const result = await UserService.getUsers();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Users is retrived Succesfully',
+    data: result,
+  });
+});
+const updateRole = catchAsync(async (req, res) => {
+  const result = await UserService.updateRole(req.body);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'User Role Update Succesfully',
+    data: result,
+  });
+});
 // export all user controller function
 export const UserController = {
   createNewUserIntoDb,
   getMe,
+  getUsers,
+  updateRole,
 };
