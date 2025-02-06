@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { TOrder, TShiping } from './order.interface';
+import { TOrder, TShiping, Tuser } from './order.interface';
 import { productSchema } from '../product/product.model';
 
 // Create order scheme
@@ -34,6 +34,21 @@ const shipingSchema = new Schema<TShiping>({
     trim: true,
     required: [true, 'This Filed is required'],
   },
+  phone: {
+    type: String,
+    trim: true,
+    required: [true, 'Phone number is required'],
+  },
+});
+
+const userSchema = new Schema<Tuser>({
+  email: {
+    type: String,
+  },
+  id: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users',
+  },
 });
 
 const orderSchema = new Schema<TOrder>({
@@ -44,13 +59,16 @@ const orderSchema = new Schema<TOrder>({
   shiping: {
     type: shipingSchema,
   },
-  cartId: {
-    type: [String],
-    required: [true, 'cart id is required'],
-  },
+  // cartId: {
+  //   type: [String],
+  //   required: [true, 'cart id is required'],
+  // },
   status: {
     type: String,
     default: 'pending',
+  },
+  user: {
+    type: userSchema,
   },
   paymentStatus: {
     type: String,

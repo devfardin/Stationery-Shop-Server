@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { Product } from '../product/product.interface';
 
 export type TShiping = {
@@ -7,6 +8,7 @@ export type TShiping = {
   firstName: string,
   lastName: string,
   postCode: string,
+  phone: string,
 };
 export type TProduct = {
   user: string,
@@ -15,9 +17,15 @@ export type TProduct = {
   quantity: number,
   id: string,
 };
+export type Tuser = {
+  email: string,
+  id: Types.ObjectId,
+};
+
 export type TOrder = {
   porducts: TProduct[],
   shiping: TShiping,
+  user: Tuser,
   cartId: string[],
   status: string,
   paymentStatus: string,
