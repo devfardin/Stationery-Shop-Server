@@ -25,8 +25,8 @@ const createOrder = async (payload: TOrder, clientIp: string) => {
         transationStatus: payment.transactionStatus,
       },
     });
-    // const productId = payload?.cartId.map((id) => id);
-    // await CartModal.deleteMany({ _id: productId });
+    const productId = payload?.cartId.map((id) => id);
+    await CartModal.deleteMany({ _id: productId });
   }
   return { result, payment };
 };

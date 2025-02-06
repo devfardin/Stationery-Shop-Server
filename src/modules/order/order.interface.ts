@@ -37,6 +37,7 @@ export type TOrder = {
     method: string,
     date_time: string,
   },
+  cartId: string[],
   TotalPrice: number,
 };
 

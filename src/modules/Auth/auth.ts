@@ -32,6 +32,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
       throw new AppError(StatusCodes.UNAUTHORIZED, 'Unauthorized');
     }
     const { userEmail, userId, role, iat } = decoded;
+
     const isUserExist = await UserModal.isUserExistByEmail(userEmail);
 
     //   check user is not exits
@@ -57,7 +58,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
         'You are not authorized user!',
       );
     }
-    req.user = decoded;
+    req.user = decoded as JwtPayload;
     next();
   });
 };
