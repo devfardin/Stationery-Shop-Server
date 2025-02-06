@@ -63,6 +63,15 @@ const getOrders = async () => {
   return result;
 };
 
+const getOrderDataBaseUser = async (email: string) => {
+  if (!email) {
+    return null;
+  }
+  const query = { user: email };
+  const result = await OrderModel.find(query).populate('product');
+  return result;
+};
+
 // Calculate Revenue from Orders
 const orderRevenue = async () => {
   const result = await OrderModel.aggregate([
@@ -94,4 +103,5 @@ export const orderService = {
   orderRevenue,
   verifyPayment,
   getOrders,
+  getOrderDataBaseUser,
 };

@@ -35,6 +35,17 @@ const getOrders = catchAsync(async (req, res) => {
   });
 });
 
+const getOrderDataBaseUser = catchAsync(async (req, res) => {
+  const email = req?.query?.email as string;
+  const result = await orderService.getOrderDataBaseUser(email);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Item retrieved successfully',
+    data: result,
+  });
+});
+
 // Handles the calculation of total revenue from all orders.
 const orderRevenue = async (req: Request, res: Response) => {
   try {
@@ -59,4 +70,5 @@ export const orderControllers = {
   orderRevenue,
   verifyPayment,
   getOrders,
+  getOrderDataBaseUser,
 };
